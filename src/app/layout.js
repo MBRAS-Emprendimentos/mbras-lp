@@ -1,8 +1,9 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import { AuthContextProvider } from "@/context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
+const mont = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
   title: "MBRAS LP",
@@ -11,14 +12,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className={inter.className}>
+    <html lang="pt-BR">
+      <body className={mont.className}>
         <AuthContextProvider>{children}</AuthContextProvider>
       </body>
     </html>

@@ -1,7 +1,10 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
+import { Card, CardFooter, Image, Button } from "@nextui-org/react";
 
 export function ImovelItem({ item }) {
-  const [retryCount, setRetryCount] = useState(0);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [currentURLIndex, setCurrentURLIndex] = useState(0);
 
   const urls = [
     `https://s3.amazonaws.com/static.nidoimovel.com.br/cf67355a3333e6e143439161adc2d82e/imovel/MB/${item.ref}/${item.ref}023.jpg`,
@@ -11,41 +14,67 @@ export function ImovelItem({ item }) {
     `https://s3.amazonaws.com/static.nidoimovel.com.br/cf67355a3333e6e143439161adc2d82e/imovel/MB/${item.ref}/${item.ref}003.jpg`,
   ];
 
-  const handleError = (e) => {
-    if (retryCount < 4) {
-      setRetryCount(retryCount + 1);
-      e.target.src = urls[retryCount + 1];
-    } else {
-      e.target.onerror = null;
+  ImovelItem.propTypes = {
+    item: PropTypes.shape({
+      titulo: PropTypes.string.isRequired,
+      // ... other properties ...
+    }).isRequired,
+    titulo: PropTypes.string,
+  };
+
+  const handleError = () => {
+    if (currentURLIndex < urls.length - 1) {
+      setCurrentURLIndex(currentURLIndex + 1);
     }
   };
 
-  // Truncate titulo if it exceeds 36 characters
+  // Truncate titulo if it exceeds 42 characters
   const truncatedTitulo =
-    item.titulo.length > 36
-      ? item.titulo.substring(0, 36) + "..."
-      : item.titulo;
+    item && item.titulo
+      ? item.titulo.length > 42
+        ? item.titulo.substring(0, 42) + "..."
+        : item.titulo
+      : "";
+
+  // Formatação do número
+  const formattedAreaUtil = Number(item.areautil).toLocaleString("pt-BR");
 
   return (
-    <a
-      href={`https://www.mbras.com.br/imovel/${item.ref}`}
-      className="block bg-gray-800 overflow-hidden shadow rounded-lg hover:bg-gray-700 transition"
-    >
-      <img
-        src={urls[0]}
-        onError={handleError}
-        alt={truncatedTitulo}
-        className="w-full h-48 object-cover"
-      />
-      <div className="p-4">
-        <h2 className="font-bold text-xl mb-2 text-white">{truncatedTitulo}</h2>
-        <p className="text-gray-400 text-base">
-          {item.bairro} - {item.cidade}
-        </p>
-        <p className="text-blue-500 hover:text-blue-700 mt-4">
-          www.mbras.com.br/imovel/{item.ref}
-        </p>
-      </div>
+    <a href={`https://www.mbras.com.br/imovel/${item.ref}`} className="m-2">
+      <Card className="border-none flex-shrink-0">
+        <Image
+          alt={truncatedTitulo}
+          src={
+            imageLoaded
+              ? urls[currentURLIndex]
+              : "https://via.placeholder.com/150"
+          }
+          onError={handleError}
+          onLoad={() => setImageLoaded(true)}
+          className={`w-full h-48 object-cover ${!imageLoaded ? "hidden" : ""}`}
+        />
+        <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
+          <p className="text-tiny text-white/80">
+            {item.bairro} - {item.cidade}
+          </p>
+          <Button
+            className="text-tiny text-white bg-black/20"
+            variant="flat"
+            color="default"
+            radius="lg"
+            size="sm"
+          >
+            {item.suites} Suítes | {formattedAreaUtil} m<sup>2</sup>
+          </Button>
+        </CardFooter>
+      </Card>
     </a>
   );
 }
+
+ImovelItem.propTypes = {
+  item: PropTypes.shape({
+    titulo: PropTypes.string.isRequired,
+    // ... other properties ...
+  }).isRequired,
+};

@@ -2,26 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light Mode Variables */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --foreground-light: 255, 255, 255; /* Black text for light mode */
+  --background-light: 255, 255, 255; /* White background for light mode */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+[data-has-value] + label {
+  @apply -translate-y-[0.9rem] scale-[0.8];
+}
+
+/* Dark Mode Variables using .dark selector from Tailwind */
+.dark {
+  --foreground-rgb: 255, 255, 255; /* White text for dark mode */
+  --background-rgb: 11, 17, 32; /* Near-black background for dark mode */
 }
 
 body {
+  @apply font-sans; /* This applies the font-sans utility from Tailwind */
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  color: rgb(var(--foreground-light));
+  background-color: rgb(var(--background-light));
+}
+
+.dark body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: rgb(var(--background-rgb));
 }

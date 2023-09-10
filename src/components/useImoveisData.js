@@ -6,6 +6,7 @@ import firebase_app from "@/firebase/config";
 import { ImoveisList } from "./ImoveisList";
 
 import dynamic from "next/dynamic";
+import DarkToggle from "./DarkToggle";
 
 const DynamicSearchComponent = dynamic(() => import("./SearchBar"), {
   ssr: false, // Ensure it's only loaded and rendered on the client side
@@ -17,13 +18,21 @@ const imoveisRef = collection(db, "imoveis");
 export const ImoveisDataContext = createContext();
 
 export function ImoveisDataProvider({
-  initialSearchTerm = "Jardim Europa",
+  initialSearchTerm = "",
   initialSearchCity = "",
 }) {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const [searchCity, setSearchCity] = useState(initialSearchCity);
+  const handleInputThresholdMet = (term, city) => {
+    if (term.length >= 3) {
+      setSearchTerm(term);
+    }
+    if (city.length >= 3) {
+      setSearchCity(city);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -51,7 +60,9 @@ export function ImoveisDataProvider({
       setData(dataList);
     };
 
-    fetchData();
+    if (searchTerm || searchCity) {
+      fetchData();
+    }
   }, [searchTerm, searchCity]);
 
   return (
@@ -64,11 +75,14 @@ export function ImoveisDataProvider({
         setSearchCity,
       }}
     >
+      <DarkToggle />
+
       <DynamicSearchComponent
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         searchCity={searchCity}
         setSearchCity={setSearchCity}
+        onInputThresholdMet={handleInputThresholdMet}
       />
       <ImoveisList data={data} />
     </ImoveisDataContext.Provider>

@@ -1,0 +1,47 @@
+[debug] [2023-09-10T16:58:30.198Z] ----------------------------------------------------------------------
+[debug] [2023-09-10T16:58:30.200Z] Command:       /opt/homebrew/Cellar/node/20.5.1/bin/node /opt/homebrew/bin/firebase deploy
+[debug] [2023-09-10T16:58:30.200Z] CLI Version:   12.5.3
+[debug] [2023-09-10T16:58:30.200Z] Platform:      darwin
+[debug] [2023-09-10T16:58:30.201Z] Node Version:  v20.5.1
+[debug] [2023-09-10T16:58:30.201Z] Time:          Sun Sep 10 2023 13:58:30 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2023-09-10T16:58:30.201Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-09-10T16:58:30.202Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-09-10T16:58:30.260Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-09-10T16:58:30.260Z] > authorizing via signed-in user (rm@mbras.com.br)
+[debug] [2023-09-10T16:58:30.260Z] [iam] checking project mbras-database for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-09-10T16:58:30.261Z] > refreshing access token with scopes: []
+[debug] [2023-09-10T16:58:30.261Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-09-10T16:58:30.261Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-10T16:58:30.487Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-09-10T16:58:30.488Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-10T16:58:30.581Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/mbras-database:testIamPermissions [none]
+[debug] [2023-09-10T16:58:30.582Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/mbras-database:testIamPermissions x-goog-quota-user=projects/mbras-database
+[debug] [2023-09-10T16:58:30.582Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mbras-database:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-09-10T16:58:30.748Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-09-10T16:58:30.748Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-09-10T16:58:31.458Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/mbras-database:testIamPermissions 200
+[debug] [2023-09-10T16:58:31.459Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/mbras-database:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-09-10T16:58:31.460Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/mbras-database [none]
+[debug] [2023-09-10T16:58:31.923Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/mbras-database 200
+[debug] [2023-09-10T16:58:31.924Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/mbras-database {"projectId":"mbras-database","projectNumber":"341903330255","displayName":"mbras-database","name":"projects/mbras-database","resources":{"hostingSite":"mbras-database","storageBucket":"mbras-database.appspot.com","locationId":"southamerica-east1"},"state":"ACTIVE","etag":"1_2ceba1f8-d677-4ec3-b62c-2f68c28f37d4"}
+[debug] [2023-09-10T16:58:33.407Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/mbras-database/sites pageToken=&pageSize=10
+[debug] [2023-09-10T16:58:34.569Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/mbras-database/sites 200
+[debug] [2023-09-10T16:58:34.570Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/mbras-database/sites {"sites":[{"name":"projects/mbras-database/sites/mbras-database","defaultUrl":"https://mbras-database.web.app","appId":"1:341903330255:web:7e0f7746fb5ff04db2e0ba","type":"DEFAULT_SITE"}]}
+[debug] [2023-09-10T16:58:34.571Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:341903330255:web:7e0f7746fb5ff04db2e0ba/config [none]
+[debug] [2023-09-10T16:58:35.571Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:341903330255:web:7e0f7746fb5ff04db2e0ba/config 200
+[debug] [2023-09-10T16:58:35.572Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:341903330255:web:7e0f7746fb5ff04db2e0ba/config {"projectId":"mbras-database","appId":"1:341903330255:web:7e0f7746fb5ff04db2e0ba","storageBucket":"mbras-database.appspot.com","locationId":"southamerica-east1","apiKey":"AIzaSyC-8OzfxADrFrvQS8O7R3SBzDrEdeyDOKM","authDomain":"mbras-database.firebaseapp.com","messagingSenderId":"341903330255","measurementId":"G-CYRFCSYY7J"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[info] - info Loaded env from /Users/ronaldo/Documents/GitHub/MBRAS/mbras-lp/.env
+
+[info] - info Creating an optimized production build...
+
