@@ -15,11 +15,15 @@ module.exports = {
       colors: {
         transparent: "transparent",
         current: "currentColor",
+        "mbras-blue": "#0B1221",
         black: colors.black,
         white: colors.white,
         emerald: colors.emerald,
         indigo: colors.indigo,
         yellow: colors.yellow,
+      },
+      borderColor: {
+        "custom-blue": "#0B1221",
       },
       fontFamily: {
         sans: ["Montserrat", "Graphik", "sans-serif"],

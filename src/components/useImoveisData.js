@@ -3,14 +3,16 @@ import { createContext, useState, useEffect } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import firebase_app from "@/firebase/config";
-import { ImoveisList } from "./ImoveisList";
+import { ImoveisList } from "../components/ImoveisList";
 
 import dynamic from "next/dynamic";
-import DarkToggle from "./DarkToggle";
 
-const DynamicSearchComponent = dynamic(() => import("./SearchBar"), {
-  ssr: false, // Ensure it's only loaded and rendered on the client side
-});
+const DynamicSearchComponent = dynamic(
+  () => import("../components/SearchBar"),
+  {
+    ssr: false, // Ensure it's only loaded and rendered on the client side
+  }
+);
 
 const db = getFirestore(firebase_app);
 const imoveisRef = collection(db, "imoveis");
@@ -75,8 +77,6 @@ export function ImoveisDataProvider({
         setSearchCity,
       }}
     >
-      <DarkToggle />
-
       <DynamicSearchComponent
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

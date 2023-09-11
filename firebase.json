@@ -7,6 +7,9 @@
       "maxInstances": 10
     }
   },
+  "env": {
+    "file": ".env"
+  },
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
