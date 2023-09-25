@@ -6,15 +6,16 @@ import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 export default function Footer() {
   return (
     <div
-      className="bg-gray-800 p-10 relative"
+      className="bg-gray-800 p-10 relatives overflow-hidden"
       style={{
         //backgroundImage: `url('https://maps.googleapis.com/maps/api/staticmap?center=-23.60176947877203,-46.70094752466863&zoom=15&size=800x600&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute inset-0 bg-black opacity-60"></div>{" "}
-      {/* Overlay */}
+      {/* 
+      <div className="absolute inset-0 bg-mbras-blue h-[80vh] opacity-90"></div>{" "}
+      Overlay */}
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
         {/* ... your footer content ... */}
         <div className="flex flex-col md:flex-row gap-4">

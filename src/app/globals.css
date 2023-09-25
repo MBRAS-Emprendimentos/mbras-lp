@@ -4,7 +4,7 @@
 
 /* Light Mode Variables */
 :root {
-  --foreground-light: 255, 255, 255; /* Black text for light mode */
+  --foreground-light: 11, 17, 32; /* Near-black background for dark mode */
   --background-light: 255, 255, 255; /* White background for light mode */
 }
 
@@ -36,8 +36,7 @@ body {
   position: relative;
   height: 100vh;
 }
-
-.parallax-image {
+z .parallax-image {
   transform: translateZ(-1px) scale(1.5);
   z-index: -1;
   position: absolute;
@@ -46,4 +45,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.slider-transition {
+  transition: transform 300ms;
 }

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Card } from "@nextui-org/react";
 import Map from "../Map";
 import { ImageComponent } from "./Image";
-import { CardFooterComponent } from "./CardFooter";
+import { CardFooterComponent } from "./CardFooterComponent";
 
 export function ImovelItem({ item }) {
   const urls = [

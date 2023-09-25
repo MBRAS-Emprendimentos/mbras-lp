@@ -4,7 +4,7 @@ import DarkToggle from "./DarkToggle";
 
 const Header = () => {
   return (
-    <header className="bg-transparent w-full p-4 absolute top-0 left-0 z-20">
+    <header className="bg-transparent p-4 absolute top-0 left-0 z-20">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-xl font-bold">MBRAS</h1>
